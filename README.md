@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To see this project, access this link [https://hopeful-goldwasser-051b11.netlify.app/](https://hopeful-goldwasser-051b11.netlify.app/)
+Open [https://hopeful-goldwasser-051b11.netlify.app/](Live) to view it in the browser.
 
 ## Available Scripts
 
