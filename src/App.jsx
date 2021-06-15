@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import Map from './Components/Map.js';
+import Map from './Components/Map.jsx';
 
 function App() {
   const [eventsData, setEventsData] = useState([]);

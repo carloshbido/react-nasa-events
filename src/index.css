@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   overflow: hidden;
 }
 
 header {
-  background-color: firebrick;
+  background-color: rgb(42, 173, 151);
   position: fixed;
   z-index: 1;
   top: 0;
@@ -15,13 +15,82 @@ header {
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 8px 0;
+  justify-content:space-between;
+  padding: 8px 20px;
   font-size: 25px;
 }
 
+header select {
+  width: 180px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-left: 10px;
+  outline: 0;
+}
+
+select option {
+  padding: 10px;
+}
+
+
 .icon-header {
   font-size: 30px;
+}
+
+.info-project {
+  position: absolute;
+  bottom: 35px;
+  left: 20px;
+  border: 1px solid #000;
+  background-color: rgb(255, 255, 255, 0.7);
+  padding: 0 20px 20px;
+  color: #000;
+  max-width: 300px;
+  display: block;
+}
+.info-project-close {
+  position: absolute;
+  cursor: pointer;
+  right: 30px;
+  margin-bottom: 40px;
+  color: rgb(42, 173, 151);
+  margin: 15px 0;
+}
+.info-project h3 {
+  margin-bottom: 0;
+}
+.info-project p {
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+.info-project-content a {
+  text-decoration: none;
+  color:rgb(42, 173, 151);
+  font-weight: bold;
+}
+
+.info-project.hidden {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  width: 300px;
+}
+.info-project.hidden h3 {
+  margin: 0;
+  padding: 0;
+}
+.info-project-close.hidden{
+  cursor: pointer;
+  color: rgb(42, 173, 151);
+  margin: 0;
+  padding: 0;
+}
+
+.info-project-content {
+  padding-top: 20px;
 }
 
 .info-box {
@@ -45,6 +114,10 @@ header {
   width: 100vw;
   height: 100vh;
   position: relative;
+}
+
+.location {
+  cursor: pointer;
 }
 
 .location-icon {

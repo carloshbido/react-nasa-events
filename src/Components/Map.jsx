@@ -1,16 +1,21 @@
-import React ,{ useState } from 'react'
+import React, {useState} from 'react'
 import GoogleMapReact from 'google-map-react';
-import LocationMarker from './LocationMarker';
-import Header from './Header';
-import Infobox from './Infobox';
+
+//Local Imports
+import LocationMarker from './LocationMarker.jsx';
+import Header from './Header.jsx';
+import Infobox from './Infobox.jsx';
+import InfoProject from './InfoProject.jsx';
 
 const Map = (props) => {
 
   const [locationBox, setLocationBox] = useState(null);
 
-  const markers = props.eventsData.map(event => {
-  
-    if (event.categories[0].id === 8) {
+  const markersLocation = props.eventsData.map(event => {
+
+    const isWildFire = event.categories[0].id === 8;
+    
+    if (isWildFire) {
 
       const getLat = event.geometries[0].coordinates[1];
       const getLgn = event.geometries[0].coordinates[0];
@@ -19,20 +24,23 @@ const Map = (props) => {
     }
 
     return null;
-  
-  })
+  });
 
   return (
     <div className="map">
       <Header />
+      
       <GoogleMapReact
         bootstrapURLKeys = {{key: 'AIzaSyBGpI2F95nQJRlQLvJHEIR4cljKD-Znb9U'}}
         defaultCenter = {props.center}
         defaultZoom = {props.zoom}
       >
-        {markers}
+        {markersLocation}
       </GoogleMapReact>
-      {locationBox && <Infobox info={locationBox}/> }
+      
+      { locationBox && <Infobox info={locationBox}/> }
+      
+      <InfoProject />
     </div>
   )
 }
@@ -42,7 +50,7 @@ Map.defaultProps = {
     lat: 42.3265,
     lng: -122.8756,
   },
-  zoom: 6,
+  zoom: 5,
 }
 
 export default Map
