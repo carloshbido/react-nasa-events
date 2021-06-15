@@ -17,7 +17,7 @@ const Map = (props) => {
 
   const markersLocation = props.eventsData.map(event => {
 
-    const isWildFire = event.categories[0].id === 9;
+    const isWildFire = event.categories[0].id === 8;
     
     if (isWildFire) {
 
