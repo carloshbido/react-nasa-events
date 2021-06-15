@@ -1,10 +1,13 @@
 import React from 'react'
 
-function Infobox({info}) {
+function Infobox({info, onCloseLocationBox}) {
 
   return (
     <div className="info-box">
-      <h2> EVENT LOCATION  </h2>
+      <div className="info-box-header">
+        <h3> EVENT LOCATION</h3>
+        <span onClick={onCloseLocationBox}>X</span>
+      </div>
       <ul>
         <li>ID: <strong>{info.id}</strong></li>
         <li>TITLE: <strong>{info.title}</strong></li>

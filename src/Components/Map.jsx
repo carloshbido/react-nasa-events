@@ -11,9 +11,13 @@ const Map = (props) => {
 
   const [locationBox, setLocationBox] = useState(null);
 
+  function closeLocationBox() {
+    setLocationBox(null);
+  }
+
   const markersLocation = props.eventsData.map(event => {
 
-    const isWildFire = event.categories[0].id === 8;
+    const isWildFire = event.categories[0].id === 9;
     
     if (isWildFire) {
 
@@ -38,7 +42,7 @@ const Map = (props) => {
         {markersLocation}
       </GoogleMapReact>
       
-      { locationBox && <Infobox info={locationBox}/> }
+      { locationBox && <Infobox info={locationBox} onCloseLocationBox={closeLocationBox}/> }
       
       <InfoProject />
     </div>
