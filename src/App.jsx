@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react'
+
+import Loading from './Components/Loading.jsx';
 import Map from './Components/Map.jsx';
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
     <div className="App">
       {!loading 
         ? <Map eventsData={eventsData}></Map> 
-        : <h1>Loading</h1>
+        : <Loading/>
         }
     </div>
   );

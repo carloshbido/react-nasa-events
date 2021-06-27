@@ -10,40 +10,60 @@ import InfoProject from './InfoProject.jsx';
 const Map = (props) => {
 
   const [locationBox, setLocationBox] = useState(null);
+  const [eventId, setEventId] = useState(8);
 
   function closeLocationBox() {
     setLocationBox(null);
   }
 
+  function getEvent(value) {
+    setEventId(Number(value));
+  }
+
   const markersLocation = props.eventsData.map(event => {
 
-    const isWildFire = event.categories[0].id === 8;
+    const eventExist = event.categories[0].id === eventId;
     
-    if (isWildFire) {
+    if (eventExist) {
 
       const getLat = event.geometries[0].coordinates[1];
       const getLgn = event.geometries[0].coordinates[0];
+      const logoId = event.categories[0].id
 
-      return <LocationMarker key={event.id} lat={getLat} lng={getLgn} onClick={() => setLocationBox({id: event.id, title: event.title}) } />
+      console.log('Logo ID from API', logoId)
+
+      return (
+        <LocationMarker 
+          key={event.id} 
+          lat={getLat} 
+          lng={getLgn} 
+          logoId={logoId} 
+          onClick={() => setLocationBox({id: event.id, title: event.title})} 
+        />);
     }
-
+    
     return null;
+
   });
 
   return (
     <div className="map">
-      <Header />
+      <Header onGetEvent={getEvent}/>
       
       <GoogleMapReact
         bootstrapURLKeys = {{key: 'AIzaSyBGpI2F95nQJRlQLvJHEIR4cljKD-Znb9U'}}
         defaultCenter = {props.center}
         defaultZoom = {props.zoom}
       >
+        
         {markersLocation}
+      
       </GoogleMapReact>
       
-      { locationBox && <Infobox info={locationBox} onCloseLocationBox={closeLocationBox}/> }
-      
+      { locationBox && 
+        <Infobox info={locationBox} onCloseLocationBox={closeLocationBox}/> 
+      }
+
       <InfoProject />
     </div>
   )
@@ -54,7 +74,7 @@ Map.defaultProps = {
     lat: 42.3265,
     lng: -122.8756,
   },
-  zoom: 5,
+  zoom: 4,
 }
 
 export default Map
