@@ -12,6 +12,7 @@ const Header = (props) => {
       <select onChange={e => props.onGetEvent(e.target.value)}>
         <option value="8">WildFire</option>
         <option value="12">Volcanoes</option>
+        <option value="15">Sea and Lake Ice</option>
         <option value="17">Snow</option>
         <option value="18">Temperature Extremes</option>
       </select>

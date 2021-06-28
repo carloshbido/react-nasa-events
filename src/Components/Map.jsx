@@ -28,9 +28,7 @@ const Map = (props) => {
 
       const getLat = event.geometries[0].coordinates[1];
       const getLgn = event.geometries[0].coordinates[0];
-      const logoId = event.categories[0].id
-
-      console.log('Logo ID from API', logoId)
+      const logoId = event.categories[0].id;
 
       return (
         <LocationMarker 
