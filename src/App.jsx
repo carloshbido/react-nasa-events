@@ -13,11 +13,15 @@ function App() {
       const fetchData = async () => {
         setLoading(true);
 
-        const response = await fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/events');
-        const { events } = await response.json();
-      
-        setEventsData(events);
-        setLoading(false);
+        try {
+          const response = await fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/events');
+          const { events } = await response.json();
+          setEventsData(events);
+        } catch {
+          console.log('Não foi possível trazer dados da Nasa')
+        } finally {
+          setLoading(false);
+        }
       }
   
       fetchData()
