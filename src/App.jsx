@@ -6,7 +6,8 @@ import Map from './Components/Map.jsx';
 function App() {
 
   const [eventsData, setEventsData] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
 
@@ -14,13 +15,11 @@ function App() {
         setLoading(true);
 
         try {
-    
           const response = await fetch('https://eonet.sci.gsfc.nasa.gov/api/v2.1/events');
           const { events } = await response.json();
           setEventsData(events);
-    
         } catch {
-          console.log('Não foi possível trazer dados da NASA')
+          setHasError(true)
         } finally {
           setLoading(false);
         }
@@ -31,7 +30,8 @@ function App() {
 
   return (
     <div className="App">
-      {!loading 
+      {hasError && <p>Erro ao buscar dados da NASA</p> }
+      {(!loading && hasError === false)
         ? <Map eventsData={eventsData}></Map> 
         : <Loading/>
         }
